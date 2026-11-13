@@ -1,5 +1,7 @@
 <?php
 use Microblog\Enums\Destaque;
+use Microblog\Helpers\Utils;
+use Microblog\Services\CategoriaServico;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../includes/cabecalho-admin.php'; 
@@ -16,6 +18,16 @@ $resumo = '';
 $destaque = Destaque::NAO->value;
 $categoria = '';
 $categoriasCarregadas = false;
+
+// Carregamento das categorias
+try {
+    $categoriaServico = new CategoriaServico();
+    $listaDeCategorias = $categoriaServico->listarTodos();
+    $categoriasCarregadas = true; // flag/sinalização de que deu tudo certo 
+} catch (Throwable $e) {
+    Utils::registrarLog($e);
+    $mensagemErro = "Não foi possível carregar as categorias";
+}
 ?>
 
 <div class="row">
