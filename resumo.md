@@ -1,26 +1,23 @@
 # Resumo do histórico da branch
 
-Branch analisada: `06_aula-1211`
+Branch analisada: `07_aula-1311`
 
-Período dos commits: 10/11/2026 a 12/11/2026
+Período dos commits: 10/11/2026 a 13/11/2026
 
 ## Principais pontos trabalhados
 
-1. **Ativação do fluxo de autenticação (`007e174`, `4089c21`, `5f49e17`, `92b0850`)**
-   Foi implementada a busca de usuário por e-mail no login, a validação dos dados informados e o fluxo completo de autenticação. Em seguida, foi adicionado o logout do administrador e a lógica de sessão para manter o usuário autenticado e redirecioná-lo em caso de saída.
+1. **Autenticação, sessão e controle de acesso (`007e174`, `4089c21`, `5f49e17`, `92b0850`, `703c860`, `81fe9e4`, `834fdc0`, `3e6d1b6`, `90add18`, `2b4f842`, `e3b7c54`, `4ab3a7c`, `3eae4c9`, `f200330`, `0ee4efd`, `3a339ea`)**
+   A estrutura inicial de autenticação foi concluída na branch anterior e foi consolidada com reforço de segurança. O sistema passou a validar login por e-mail, manter a sessão ativa, bloquear acesso sem autenticação, distinguir usuários editor e administrador, controlar links e páginas restritas e impedir a exclusão da própria conta. Também foi incluída a exibição do contexto da sessão no painel administrativo para melhorar o feedback ao usuário.
 
-2. **Proteção por sessão e controle de acesso (`703c860`, `81fe9e4`, `834fdc0`, `3e6d1b6`, `90add18`, `2b4f842`, `e3b7c54`, `4ab3a7c`)**
-   A classe `ControleDeAcesso` foi ampliada para iniciar e encerrar a sessão, exigir login, verificar o tipo do usuário e controlar o acesso às páginas administrativas. O cabeçalho administrativo passou a bloquear usuários sem autenticação, e as telas de gerenciamento passaram a exigir perfil de administrador. Também foi incluída a verificação do tipo de conta na sessão e a restrição dos links administrativos para quem não tem permissão.
+2. **Gerenciamento completo de notícias e categorias (`88035dd`, `9121b54`, `4cd4f10`, `82f199c`, `c50aded`, `e1c9f1c`, `b982a15`, `1e2dfd2`, `c487663`)**
+   A área administrativa recebeu o fluxo de cadastro de notícias, com carga dinâmica de categorias, estrutura inicial para inserção no banco, tratamento de falhas e preservação do valor do formulário em caso de erro. Também foi ajustada a modelagem do cadastro para tratar o identificador e a data da notícia como campos opcionais, permitindo uma inserção mais flexível e consistente com a regra de negócio do projeto.
 
-3. **Exibição de contexto e feedback do usuário (`3eae4c9`, `f200330`)**
-   As páginas administrativas passaram a exibir detalhes da sessão atual, como nome e tipo de usuário, e o autoload foi carregado antes das verificações de acesso administrativo para garantir que as classes necessárias estejam disponíveis. Isso melhorou o feedback visual e a consistência do fluxo de autenticação.
+3. **Ajustes de experiência e conteúdo visual (`205bf15`)**
+   Foi adicionada a estrutura visual e os ativos de imagem relacionados ao portal, reforçando a aparência do microblog e contribuindo para a apresentação final das notícias e de suas capas no front-end.
 
-4. **Gerenciamento de usuários e segurança de exclusão (`65f5568`, `3fc6ff7`, `3a339ea`)**
-   Foi adicionado o método de serviço para exclusão de usuários e implementada a operação completa de remoção. A partir daí, também foi bloqueada a exclusão da própria conta para evitar inconsistências de sessão e manutenção do usuário administrador principal.
-
-5. **Atualização de perfil do usuário (`0ee4efd`)**
-   O painel administrativo recebeu a funcionalidade de atualizar os dados do próprio perfil, permitindo ao usuário alterar informações cadastrais e manter a experiência consistente com o restante do sistema. A operação foi integrada ao fluxo de sessão e à área administrativa.
+4. **Preparação para operação real do painel (`65f5568`, `3fc6ff7`, `3a339ea`, `0ee4efd`)**
+   O gerenciamento de usuários e as ações administrativas foram integrados ao fluxo real de sessão, com foco em segurança e manutenção do perfil principal. A atualização do próprio perfil e a exclusão controlada de usuários deixam o painel mais funcional e seguro para uso operacional.
 
 ## Estado resultante
 
-A branch inclui um fluxo de autenticação funcional com busca por e-mail, validação de campos, login, logout e controle de sessão. O acesso às áreas administrativas passou a depender do tipo de usuário e da presença de dados de sessão válidos, com bloqueios para visitantes e usuários sem permissão. Também houve melhorias na experiência do painel, como a exibição do contexto da sessão, restrição de links e proteção contra a exclusão do próprio usuário. A área de administração está pronta para operar com autenticação e permissões por perfil, além de permitir atualização do perfil do usuário logado.
+A branch 07 consolidou o fluxo de autenticação e permissões e avançou para o gerenciamento de conteúdo. O sistema está estruturado para operar com usuários autenticados, controle de acesso por perfil, cadastro de notícias, carregamento dinâmico de categorias e tratamento de erros no formulário. Com isso, a área administrativa está mais próxima de um ambiente completo de publicação, com foco em segurança, consistência de dados e usabilidade para editores e administradores.
